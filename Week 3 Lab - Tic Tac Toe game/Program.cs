@@ -313,8 +313,8 @@ namespace tictactoe
                     DrawBoard();
                     Console.WriteLine("\nIt's a tie");
                    // Console.WriteLine("\nPress ENTER to restart");
-                   //// Console.ReadKey();
-                    stateclear();
+                   //Console.ReadKey();
+                   //stateclear();
                     break;
                 }
 
@@ -342,6 +342,7 @@ namespace tictactoe
 
         }
 
+        /*
         static void stateclear()
         {
             square1 = EMPTY;
@@ -354,6 +355,7 @@ namespace tictactoe
             square8 = EMPTY;
             square9 = EMPTY;
         }
+        */
         private static object PrintState(int state)
 
         {

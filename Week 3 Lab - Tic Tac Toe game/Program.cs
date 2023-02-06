@@ -40,16 +40,16 @@ namespace tictactoe
 
         static int square9 = EMPTY;
 
-        static bool iswinner = false;
+        //static bool iswinner = false;
 
         static void Main(string[] args)
 
         {
 
-            while (iswinner == false)
-            {
+            //while (iswinner == false)
+            //{
                 TicTacToe();
-            }
+            //}
 
             Console.ReadLine();
 
@@ -160,7 +160,7 @@ namespace tictactoe
                 {
 
                     Console.WriteLine("\nPlayer wins!");
-                    iswinner = true;
+                    //iswinner = true;
                     break;
 
                 }
@@ -171,9 +171,9 @@ namespace tictactoe
                 {
                     DrawBoard();
                     Console.WriteLine("\nIt's a tie");
-                    Console.WriteLine("\nPress ENTER to restart");
-                    Console.ReadKey();
-                    stateclear();
+                    //Console.WriteLine("\nPress ENTER to restart"); 
+                    //Console.ReadKey();
+                    //stateclear();
                     break;
                 }
 
@@ -301,7 +301,7 @@ namespace tictactoe
                     DrawBoard();
                     Console.WriteLine("\nComputer wins!");
 
-                    iswinner = true;
+                    //iswinner = true;
                     break;
 
                 }
@@ -312,8 +312,8 @@ namespace tictactoe
                 {
                     DrawBoard();
                     Console.WriteLine("\nIt's a tie");
-                    Console.WriteLine("\nPress ENTER to restart");
-                    Console.ReadKey();
+                   // Console.WriteLine("\nPress ENTER to restart");
+                   //// Console.ReadKey();
                     stateclear();
                     break;
                 }

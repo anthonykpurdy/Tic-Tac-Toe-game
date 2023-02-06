@@ -40,8 +40,22 @@ namespace tictactoe
 
         static int square9 = EMPTY;
 
+        static bool iswinner = false;
+
         static void Main(string[] args)
 
+        {
+
+            while (iswinner == false)
+            {
+                TicTacToe();
+            }
+
+            Console.ReadLine();
+
+        }
+
+        static void TicTacToe()
         {
 
             while (true)
@@ -52,49 +66,118 @@ namespace tictactoe
 
                 //get user choice   
 
-                Console.WriteLine("Select a square (1-9)");
+                while (true) // player choice
+                {
+                    try // catching inproper inputs
+                    {
+                        Console.WriteLine("Select a square (1-9)");
 
-                int selectedsquare = Int32.Parse(Console.ReadLine());
+                        int selectedsquare = int.Parse(Console.ReadLine());
 
-                //update that sleected square to an x   
+                        //update that sleected square to an x   
 
-                if (selectedsquare == 1)
+                        if (selectedsquare == 1 && square1 == EMPTY)
+                        {
+                            square1 = X;
+                            break;
+                        }
+                        else if (selectedsquare == 2 && square2 == EMPTY)
+                        {
+                            square2 = X;
+                            break;
+                        }
+                        else if (selectedsquare == 3 && square3 == EMPTY)
+                        {
+                            square3 = X;
+                            break;
+                        }
+                        else if (selectedsquare == 4 && square4 == EMPTY)
+                        {
+                            square4 = X;
+                            break;
+                        }
+                        else if (selectedsquare == 5 && square5 == EMPTY)
+                        {
+                            square5 = X;
+                            break;
+                        }
+                        else if (selectedsquare == 6 && square6 == EMPTY)
+                        {
+                            square6 = X;
+                            break;
+                        }
+                        else if (selectedsquare == 7 && square7 == EMPTY)
+                        {
+                            square7 = X;
+                            break;
+                        }
+                        else if (selectedsquare == 8 && square8 == EMPTY)
+                        {
+                            square8 = X;
+                            break;
+                        }
+                        else if (selectedsquare == 9 && square9 == EMPTY)
+                        {
+                            square9 = X;
+                            break;
+                        }
+                        else if (selectedsquare > 9 || selectedsquare < 1)
+                        {
 
-                    square1 = X;
+                        }
+                        else // checking if the input was valid
+                        {
+                            Console.WriteLine("Select an empty square");
 
-                if (selectedsquare == 2)
+                        }
+                    }
+                    catch (SystemException ex)
+                    {
+                        Console.WriteLine("Please enter an integer");
+                    }
+                }
+                DrawBoard();
 
-                    square2 = X;
+                // Test if the player won   
+                if (
 
-                if (selectedsquare == 3)
+                  (square1 == X && square2 == X && square3 == X) ||
 
-                    square3 = X;
+                  (square4 == X && square5 == X && square6 == X) ||
 
-                if (selectedsquare == 4)
+                  (square7 == X && square8 == X && square9 == X) ||
 
-                    square4 = X;
+                  (square1 == X && square4 == X && square7 == X) ||
 
-                if (selectedsquare == 5)
+                  (square2 == X && square5 == X && square8 == X) ||
 
-                    square5 = X;
+                  (square3 == X && square6 == X && square9 == X) ||
 
-                if (selectedsquare == 6)
+                  (square1 == X && square5 == X && square9 == X) ||
 
-                    square6 = X;
+                  (square3 == X && square5 == X && square7 == X))
 
-                if (selectedsquare == 7)
+                {
 
-                    square7 = X;
+                    Console.WriteLine("\nPlayer wins!");
+                    iswinner = true;
+                    break;
 
-                if (selectedsquare == 8)
+                }
 
-                    square8 = X;
+                if (
+                  square1 != EMPTY && square2 != EMPTY && square3 != EMPTY && square4 != EMPTY &&
+                  square5 != EMPTY && square6 != EMPTY && square7 != EMPTY && square8 != EMPTY && square9 != EMPTY)
+                {
+                    DrawBoard();
+                    Console.WriteLine("\nIt's a tie");
+                    Console.WriteLine("\nPress ENTER to restart");
+                    Console.ReadKey();
+                    stateclear();
+                    break;
+                }
 
-                if (selectedsquare == 9)
-
-                    square9 = X;
-
-                while (true)
+                while (true) // computer choice
 
                 {
 
@@ -196,8 +279,6 @@ namespace tictactoe
 
                 }
 
-                DrawBoard();
-
                 if (
 
                   (square1 == O && square2 == O && square3 == O) ||
@@ -217,44 +298,27 @@ namespace tictactoe
                   (square3 == O && square5 == O && square7 == O))
 
                 {
-
+                    DrawBoard();
                     Console.WriteLine("\nComputer wins!");
 
+                    iswinner = true;
                     break;
 
                 }
 
-                // Test if the player won   
-
                 if (
-
-                  (square1 == X && square2 == X && square3 == X) ||
-
-                  (square4 == X && square5 == X && square6 == X) ||
-
-                  (square7 == X && square8 == X && square9 == X) ||
-
-                  (square1 == X && square4 == X && square7 == X) ||
-
-                  (square2 == X && square5 == X && square8 == X) ||
-
-                  (square3 == X && square6 == X && square9 == X) ||
-
-                  (square1 == X && square5 == X && square9 == X) ||
-
-                  (square3 == X && square5 == X && square7 == X))
-
+                  square1 != EMPTY && square2 != EMPTY && square3 != EMPTY && square4 != EMPTY &&
+                  square5 != EMPTY && square6 != EMPTY && square7 != EMPTY && square8 != EMPTY && square9 != EMPTY)
                 {
-
-                    Console.WriteLine("\nPlayer wins!");
-
+                    DrawBoard();
+                    Console.WriteLine("\nIt's a tie");
+                    Console.WriteLine("\nPress ENTER to restart");
+                    Console.ReadKey();
+                    stateclear();
                     break;
-
                 }
 
             }
-
-            Console.ReadLine();
 
         }
 
@@ -278,6 +342,18 @@ namespace tictactoe
 
         }
 
+        static void stateclear()
+        {
+            square1 = EMPTY;
+            square2 = EMPTY;
+            square3 = EMPTY;
+            square4 = EMPTY;
+            square5 = EMPTY;
+            square6 = EMPTY;
+            square7 = EMPTY;
+            square8 = EMPTY;
+            square9 = EMPTY;
+        }
         private static object PrintState(int state)
 
         {
